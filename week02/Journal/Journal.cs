@@ -66,7 +66,7 @@ public class Journal
 
             string[] parts = line.Split(Separator);
 
-            if (parts.Length < 3)
+            if (parts.Length < 4)
             {
                 continue; // skip malformed lines
             }
@@ -74,8 +74,9 @@ public class Journal
             string date = parts[0];
             string promptText = parts[1];
             string entryText = parts[2];
+            string mood = parts[3];
 
-            loadedEntries.Add(new Entry(date, promptText, entryText));
+            loadedEntries.Add(new Entry(date, promptText, entryText, mood));
         }
 
         _entries = loadedEntries;

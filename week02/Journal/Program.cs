@@ -2,12 +2,15 @@ using System;
 
 // ----------------------------------------------------------------------
 //  Creativity notes:
+// - Added a "mood" field to each Entry, so the user records how they were
+//   feeling alongside their written response. This saves additional
+//   information beyond the core date/prompt/text requirement, and helps
+//   address a reason people avoid journaling (not knowing what to write) -
+//   a quick mood tag gives them something easy to record even on days
+//   they don't feel like writing much.
 // - Added a few extra prompts to the PromptGenerator beyond the required five.
 // - LoadFromFile gracefully handles a missing file and skips malformed
 //   lines instead of crashing.
-// - Entry knows how to convert itself to and from a file line
-//   (ToFileString), so the file format details live with the Entry class
-//   rather than being scattered through Journal.
 // ----------------------------------------------------------------------
 
 public class Program
@@ -74,9 +77,12 @@ public class Program
         Console.Write("> ");
         string response = Console.ReadLine();
 
+        Console.Write("How are you feeling right now? ");
+        string mood = Console.ReadLine();
+
         string date = DateTime.Now.ToShortDateString();
 
-        Entry newEntry = new Entry(date, prompt, response);
+        Entry newEntry = new Entry(date, prompt, response, mood);
         journal.AddEntry(newEntry);
     }
 }
