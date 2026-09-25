@@ -29,5 +29,3 @@ class Program
         Console.WriteLine($"Total Price: ${order2.CalculateTotalCost():F2}\n");
     }
 }
-
-//dwaynemaster007
