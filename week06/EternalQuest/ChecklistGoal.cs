@@ -26,7 +26,8 @@ public class ChecklistGoal : Goal
     public override int RecordEvent()
     {
         _amountCompleted++;
-        if (_amountCompleted >= _target)
+        // Award bonus only on the exact completion event
+        if (_amountCompleted == _target)
         {
             return GetPoints() + _bonus;
         }
